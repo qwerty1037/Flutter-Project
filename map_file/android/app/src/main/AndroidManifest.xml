@@ -3,6 +3,10 @@
    <application
         android:label="snu_lecture_map"
         android:icon="@mipmap/ic_launcher">
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyD3sXEX2Jcvpk4fLJuLRKZyDNgiGst7CPo"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
