@@ -1,4 +1,4 @@
-#Sun Mar 27 21:20:50 KST 2022
-base.0=/Users/qwerty1029/Desktop/github/snu_lecture_map/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+#Sat Oct 15 11:16:51 KST 2022
+base.0=C\:\\Users\\okht1\\Documents\\GitHub\\Flutter-Project\\map_file\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
