@@ -16,11 +16,9 @@ List<Dataclass> dataclass = [];
 List<String> lectureNameList = [];
 
 class SearchScreen extends StatefulWidget {
-  double bottomBarHeight;
-  double appBarHeight;
 
   SearchScreen(
-      {Key? key, required this.bottomBarHeight, required this.appBarHeight})
+      {Key? key})
       : super(key: key);
 
   @override

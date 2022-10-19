@@ -32,7 +32,7 @@
         android:label="snu_lecture_map" >
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyD3sXEX2Jcvpk4fLJuLRKZyDNgiGst7CPo" />
+            android:value="AIzaSyBqPMukDAfhWgZ2Hu0VU-uXVEfi6ZkUq2k" />
 
         <activity
             android:name="com.example.snu_lecture_map.MainActivity"

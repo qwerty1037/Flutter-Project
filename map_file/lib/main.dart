@@ -3,16 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:snu_lecture_map/map.dart';
+import 'package:snu_lecture_map/googlemap.dart';
 import 'package:snu_lecture_map/search.dart';
 import 'package:snu_lecture_map/setting.dart';
 import 'package:snu_lecture_map/timetable.dart';
 import 'package:flutter/services.dart';
 
 void main() {
+  /*runapp에 비동기 작업이 있을 경우 넣어주는 코드*/
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-  //runApp(Home());
+
+  /*depreciated 되어있어서 새로 수정함, 네비게이션과 상태바를 숨겨준다*/
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
+
   runApp(MyApp());
 }
 
@@ -38,23 +41,14 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    /*부모 클래스에 있는 initstate 메소드를 호출하기 위한 코드*/
     super.initState();
     _init();
-
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //   dataclass = sql_GetDataFromSql();
-    // });
-
-    // dataclass = sql_GetDataFromSql.then((value) => null);
-
-    // Timer(
-    //   Duration(milliseconds: 1500),
-    //     () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SNUMap())),
-    // );
-    // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SNUMap()));
   }
 
+  /*async는 await를 쓸 수 있게 해주는 키워드*/
   void _init() async {
+    /*sql_ ~ 함수가 모두 실행되어서 값을 리턴할때까지 기다림*/
     dataclass = await sql_GetDataFromSql();
     preProcessingData();
     print("sql finish");
@@ -66,6 +60,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    /*기종별로 화면 사이즈가 다를 수 있기 때문에 mediaquery를 이용해서 현재 실행되는 환경에서의 width를 가져옴*/
     var screenWidth = MediaQuery.of(context).size.width;
     return //WillPopScope(
         //onWillPop: () async => false,
@@ -73,6 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
         //data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         //child:
         new Scaffold(
+          /*앱 켜질때 플러터 로고 띄우는 그 부분*/
             backgroundColor: Color(0xffaeddef),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -105,6 +101,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
+/*중간에 왜 거치는지 모를 stless widget*/
 class SNUMap extends StatelessWidget {
   const SNUMap({Key? key}) : super(key: key);
   @override
@@ -131,6 +128,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Matrix4 transform_matrix = Matrix4.identity();
+  /*처음에 실행했을 때 뜨는 창의 index -> 0으로 되어있으면 map이 뜨고 3으로 되어있으면 settings*/
   int _selectedIndex = 0;
   double bottomBarHeight = 60;
 
@@ -197,22 +195,13 @@ class _MainPageState extends State<MainPage> {
         builder: (context) {
           double _appBarHeight = Scaffold.of(context).appBarMaxHeight ?? 0;
           List<Widget> _widgetOption = [
-            MapScreen(
-              bottomBarHeight: bottomBarHeight,
-              appBarHeight: _appBarHeight,
-            ),
-            SearchScreen(
-              bottomBarHeight: bottomBarHeight,
-              appBarHeight: _appBarHeight,
-            ),
+            googlemapscreen(),
+            SearchScreen(),
             TimeTable(
               bottomBarHeight: bottomBarHeight,
               appBarHeight: _appBarHeight,
             ),
-            SettingScreen(
-              bottomBarHeight: bottomBarHeight,
-              appBarHeight: _appBarHeight,
-            ),
+            SettingScreen(),
           ];
           return IndexedStack(
             index: _selectedIndex,
@@ -220,6 +209,8 @@ class _MainPageState extends State<MainPage> {
           );
         },
       ),
+
+      /*bottom navigationbar widget 자체에서 페이지 전환 기능을 지원한다*/
       bottomNavigationBar: SizedBox(
         height: bottomBarHeight,
         child: BottomNavigationBar(

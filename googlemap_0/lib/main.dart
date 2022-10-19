@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,12 +13,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late GoogleMapController mapController;
+  final List<Marker> _markers = [];
 
-  final LatLng _center = const LatLng(37.4592, 126.9521);
+  Future<void> _onMapCreated(GoogleMapController controller) async {
 
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
+    setState(() {
+      _markers.add(Marker(
+          markerId: MarkerId("301"),
+          draggable: true,
+          onTap: () => print("Marker!"),
+          position: LatLng(37.4498, 126.9525)));
+      _markers.add(Marker(
+          markerId: MarkerId("gwanjung"),
+          draggable: true,
+          onTap: () => print("Marker!"),
+          position: LatLng(37.4592, 126.9521)));
+    });
   }
 
   @override
@@ -24,15 +36,16 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Maps Sample App'),
+          title: const Text('Google Office Locations'),
           backgroundColor: Colors.green[700],
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 17.0,
+          initialCameraPosition: const CameraPosition(
+            target: LatLng(37.4592, 126.9521),
+            zoom: 17,
           ),
+          markers: _markers.toSet(),
         ),
       ),
     );

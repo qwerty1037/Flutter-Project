@@ -15,30 +15,14 @@ import 'package:photo_view/photo_view.dart';
 import 'package:flutter/animation.dart';
 import 'package:provider/provider.dart';
 
-//test1
-//for saving current screen number
-
-
-class CurrentScreenNumber {
-  int? currentNum;
-
-  CurrentScreenNumber({this.currentNum});
-
-  void changeCurrentNum(int changeTo) {
-    this.currentNum = changeTo;
-  }
-}
-
 // class _MapState extends State<Home>
 // with AutomaticKeepAliveClientMixin {
 //   int _count = 0;
 // }
 
 class MapScreen extends StatefulWidget {
-  double bottomBarHeight;
-  double appBarHeight;
 
-  MapScreen({Key? key, required this.bottomBarHeight, required this.appBarHeight}) : super(key: key);
+  MapScreen({Key? key}) : super(key: key);
 
   @override
   _MapScreenState createState() => _MapScreenState();

@@ -3,11 +3,9 @@ import 'dart:math';
 import 'package:snu_lecture_map/search.dart';
 
 class SettingScreen extends StatefulWidget {
-  double bottomBarHeight;
-  double appBarHeight;
 
   SettingScreen(
-      {Key? key, required this.bottomBarHeight, required this.appBarHeight})
+      {Key? key})
       : super(key: key);
 
   @override
