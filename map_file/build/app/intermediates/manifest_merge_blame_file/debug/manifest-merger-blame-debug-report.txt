@@ -5,102 +5,151 @@
 5    android:versionName="1.0.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="16"
+8        android:minSdkVersion="20"
 9        android:targetSdkVersion="32" />
 10    <!--
 11         Flutter needs it to communicate with the running application
 12         to allow setting breakpoints, to provide hot reload, etc.
 13    -->
 14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/debug/AndroidManifest.xml:6:5-66
-14-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/debug/AndroidManifest.xml:6:22-64
-15
-16    <application
-16-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:3:4-41:19
-17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-17-->[androidx.core:core:1.6.0] /Users/qwerty1029/.gradle/caches/transforms-3/d118b71b31ac2018b0687bad4db3eb97/transformed/core-1.6.0/AndroidManifest.xml:24:18-86
-18        android:debuggable="true"
-19        android:icon="@mipmap/ic_launcher"
-19-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:5:9-43
-20        android:label="snu_lecture_map" >
-20-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:4:9-40
-21        <activity
-21-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:6:9-35:20
-22            android:name="com.example.snu_lecture_map.MainActivity"
-22-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:7:13-41
-23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-23-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:11:13-163
-24            android:exported="true"
-24-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:8:13-36
-25            android:hardwareAccelerated="true"
-25-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:12:13-47
-26            android:launchMode="singleTop"
-26-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:9:13-43
-27            android:theme="@style/LaunchTheme"
-27-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:10:13-47
-28            android:windowSoftInputMode="adjustResize" >
-28-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:13:13-55
-29
-30            <!--
-31                 Specifies an Android theme to apply to this Activity as soon as
-32                 the Android process has started. This theme is visible to the user
-33                 while the Flutter UI initializes. After that, this theme continues
-34                 to determine the Window background behind the Flutter UI.
-35            -->
-36            <meta-data
-36-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:18:13-21:17
-37                android:name="io.flutter.embedding.android.NormalTheme"
-37-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:19:15-70
-38                android:resource="@style/NormalTheme" />
-38-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:20:15-52
-39            <!--
-40                 Displays an Android View that continues showing the launch screen
-41                 Drawable until Flutter paints its first frame, then this splash
-42                 screen fades out. A splash screen is useful to avoid any visual
-43                 gap between the end of Android's launch screen and the painting of
-44                 Flutter's first frame.
-45            -->
-46            <meta-data
-46-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:27:13-30:17
-47                android:name="io.flutter.embedding.android.SplashScreenDrawable"
-47-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:28:15-79
-48                android:resource="@drawable/launch_background" />
-48-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:29:15-61
-49
-50            <intent-filter>
-50-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:31:13-34:29
-51                <action android:name="android.intent.action.MAIN" />
-51-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:32:17-68
-51-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:32:25-66
-52
-53                <category android:name="android.intent.category.LAUNCHER" />
-53-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:33:17-76
-53-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:33:27-74
-54            </intent-filter>
-55        </activity>
-56        <!--
-57             Don't delete the meta-data below.
-58             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
-59        -->
-60        <meta-data
-60-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:38:9-40:33
-61            android:name="flutterEmbedding"
-61-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:39:13-44
-62            android:value="2" />
-62-->/Users/qwerty1029/Desktop/github/snu_lecture_map/android/app/src/main/AndroidManifest.xml:40:13-30
-63
-64        <uses-library
-64-->[androidx.window:window:1.0.0-beta04] /Users/qwerty1029/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
-65            android:name="androidx.window.extensions"
-65-->[androidx.window:window:1.0.0-beta04] /Users/qwerty1029/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
-66            android:required="false" />
-66-->[androidx.window:window:1.0.0-beta04] /Users/qwerty1029/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
-67        <uses-library
-67-->[androidx.window:window:1.0.0-beta04] /Users/qwerty1029/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
-68            android:name="androidx.window.sidecar"
-68-->[androidx.window:window:1.0.0-beta04] /Users/qwerty1029/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
-69            android:required="false" />
-69-->[androidx.window:window:1.0.0-beta04] /Users/qwerty1029/.gradle/caches/transforms-3/c291a541648cf1084eba3acf0d5d6a11/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
-70    </application>
-71
-72</manifest>
+14-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\debug\AndroidManifest.xml:6:5-66
+14-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\debug\AndroidManifest.xml:6:22-64
+15    <!-- Include required permissions for Google Maps API to run. -->
+16    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+16-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
+16-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:23:22-76
+17
+18    <uses-feature
+18-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+19        android:glEsVersion="0x00020000"
+19-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+20        android:required="true" />
+20-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+21
+22    <queries>
+22-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:30:5-34:15
+23
+24        <!-- Needs to be explicitly declared on Android R+ -->
+25        <package android:name="com.google.android.apps.maps" />
+25-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+25-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+26    </queries>
+27
+28    <application
+28-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:3:4-45:19
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.6.0] C:\Users\ljbee\.gradle\caches\transforms-3\d118b71b31ac2018b0687bad4db3eb97\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+30        android:debuggable="true"
+31        android:icon="@mipmap/ic_launcher"
+31-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:5:9-43
+32        android:label="snu_lecture_map" >
+32-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:4:9-40
+33        <meta-data
+33-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:7:8-8:69
+34            android:name="com.google.android.geo.API_KEY"
+34-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:7:19-64
+35            android:value="AIzaSyD3sXEX2Jcvpk4fLJuLRKZyDNgiGst7CPo" />
+35-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:8:12-67
+36
+37        <activity
+37-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:10:9-39:20
+38            android:name="com.example.snu_lecture_map.MainActivity"
+38-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:11:13-41
+39            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+39-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:15:13-163
+40            android:exported="true"
+40-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:12:13-36
+41            android:hardwareAccelerated="true"
+41-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:16:13-47
+42            android:launchMode="singleTop"
+42-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:13:13-43
+43            android:theme="@style/LaunchTheme"
+43-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:14:13-47
+44            android:windowSoftInputMode="adjustResize" >
+44-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:17:13-55
+45
+46            <!--
+47                 Specifies an Android theme to apply to this Activity as soon as
+48                 the Android process has started. This theme is visible to the user
+49                 while the Flutter UI initializes. After that, this theme continues
+50                 to determine the Window background behind the Flutter UI.
+51            -->
+52            <meta-data
+52-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:22:13-25:17
+53                android:name="io.flutter.embedding.android.NormalTheme"
+53-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:23:15-70
+54                android:resource="@style/NormalTheme" />
+54-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:24:15-52
+55            <!--
+56                 Displays an Android View that continues showing the launch screen
+57                 Drawable until Flutter paints its first frame, then this splash
+58                 screen fades out. A splash screen is useful to avoid any visual
+59                 gap between the end of Android's launch screen and the painting of
+60                 Flutter's first frame.
+61            -->
+62            <meta-data
+62-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:31:13-34:17
+63                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+63-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:32:15-79
+64                android:resource="@drawable/launch_background" />
+64-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:33:15-61
+65
+66            <intent-filter>
+66-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:35:13-38:29
+67                <action android:name="android.intent.action.MAIN" />
+67-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:36:17-68
+67-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:36:25-66
+68
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:37:17-76
+69-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:37:27-74
+70            </intent-filter>
+71        </activity>
+72        <!--
+73             Don't delete the meta-data below.
+74             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+75        -->
+76        <meta-data
+76-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:42:9-44:33
+77            android:name="flutterEmbedding"
+77-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:43:13-44
+78            android:value="2" />
+78-->C:\Users\ljbee\Documents\GitHub\Flutter-Project\map_file\android\app\src\main\AndroidManifest.xml:44:13-30
+79
+80        <uses-library
+80-->[androidx.window:window:1.0.0-beta04] C:\Users\ljbee\.gradle\caches\transforms-3\c291a541648cf1084eba3acf0d5d6a11\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40
+81            android:name="androidx.window.extensions"
+81-->[androidx.window:window:1.0.0-beta04] C:\Users\ljbee\.gradle\caches\transforms-3\c291a541648cf1084eba3acf0d5d6a11\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:26:13-54
+82            android:required="false" />
+82-->[androidx.window:window:1.0.0-beta04] C:\Users\ljbee\.gradle\caches\transforms-3\c291a541648cf1084eba3acf0d5d6a11\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:27:13-37
+83        <uses-library
+83-->[androidx.window:window:1.0.0-beta04] C:\Users\ljbee\.gradle\caches\transforms-3\c291a541648cf1084eba3acf0d5d6a11\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:28:9-30:40
+84            android:name="androidx.window.sidecar"
+84-->[androidx.window:window:1.0.0-beta04] C:\Users\ljbee\.gradle\caches\transforms-3\c291a541648cf1084eba3acf0d5d6a11\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:29:13-51
+85            android:required="false" /> <!-- Needs to be explicitly declared on P+ -->
+85-->[androidx.window:window:1.0.0-beta04] C:\Users\ljbee\.gradle\caches\transforms-3\c291a541648cf1084eba3acf0d5d6a11\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:30:13-37
+86        <uses-library
+86-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+87            android:name="org.apache.http.legacy"
+87-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+88            android:required="false" />
+88-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\ljbee\.gradle\caches\transforms-3\06dd6f64d80ea7b0bb1a7003d72df529\transformed\jetified-play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+89
+90        <activity
+90-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ljbee\.gradle\caches\transforms-3\c2192f193bc8d13a09376fb3667a720e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+91            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+91-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ljbee\.gradle\caches\transforms-3\c2192f193bc8d13a09376fb3667a720e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+92            android:exported="false"
+92-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ljbee\.gradle\caches\transforms-3\c2192f193bc8d13a09376fb3667a720e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+93            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+93-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\ljbee\.gradle\caches\transforms-3\c2192f193bc8d13a09376fb3667a720e\transformed\jetified-play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+94
+95        <meta-data
+95-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\ljbee\.gradle\caches\transforms-3\f2ad23f153d54e3a2d28e23aa8a6fa50\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:21:9-23:69
+96            android:name="com.google.android.gms.version"
+96-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\ljbee\.gradle\caches\transforms-3\f2ad23f153d54e3a2d28e23aa8a6fa50\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:22:13-58
+97            android:value="@integer/google_play_services_version" />
+97-->[com.google.android.gms:play-services-basement:18.0.0] C:\Users\ljbee\.gradle\caches\transforms-3\f2ad23f153d54e3a2d28e23aa8a6fa50\transformed\jetified-play-services-basement-18.0.0\AndroidManifest.xml:23:13-66
+98    </application>
+99
+100</manifest>

@@ -386,7 +386,7 @@ class _InfoboxState extends State<Infobox> {
                     ),
                     Align(
                       alignment: Alignment.bottomRight,
-                      child: RaisedButton(
+                      child: ElevatedButton(
                         onPressed: () {
                           setState(() {
                             // showing._showLectures = !showing._showLectures;
@@ -513,5 +513,3 @@ class _ShowLecturesState extends State<ShowLectures> {
     );
   }
 }
-
-
