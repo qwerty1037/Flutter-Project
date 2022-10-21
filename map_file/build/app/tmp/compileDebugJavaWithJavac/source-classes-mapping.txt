@@ -1,0 +1,4 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+com/example/snu_lecture_map/BuildConfig.java
+ com.example.snu_lecture_map.BuildConfig

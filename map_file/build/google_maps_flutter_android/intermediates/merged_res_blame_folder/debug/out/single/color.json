@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/qwerty1029/Desktop/github/Flutter-Project/map_file/build/google_maps_flutter_android/intermediates/merged_res/debug/color/common_google_signin_btn_tint.xml",
+        "source": "/Users/qwerty1029/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/res/color/common_google_signin_btn_tint.xml"
+    },
+    {
+        "merged": "/Users/qwerty1029/Desktop/github/Flutter-Project/map_file/build/google_maps_flutter_android/intermediates/merged_res/debug/color/common_google_signin_btn_text_light.xml",
+        "source": "/Users/qwerty1029/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/res/color/common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "/Users/qwerty1029/Desktop/github/Flutter-Project/map_file/build/google_maps_flutter_android/intermediates/merged_res/debug/color/common_google_signin_btn_text_dark.xml",
+        "source": "/Users/qwerty1029/.gradle/caches/transforms-3/c2192f193bc8d13a09376fb3667a720e/transformed/jetified-play-services-base-18.0.1/res/color/common_google_signin_btn_text_dark.xml"
+    }
+]
