@@ -15,7 +15,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final List<Marker> _markers = [];
 
+  late GoogleMapController _controller;
+
   Future<void> _onMapCreated(GoogleMapController controller) async {
+    _controller = controller;
+    String value = await DefaultAssetBundle.of(context)
+        .loadString('assets/map_style.json');
+    _controller.setMapStyle(value);
 
     setState(() {
       _markers.add(Marker(
@@ -34,10 +40,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Google Office Locations'),
-          backgroundColor: Colors.green[700],
+          backgroundColor: Colors.blue[700],
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
@@ -45,6 +52,7 @@ class _MyAppState extends State<MyApp> {
             target: LatLng(37.4592, 126.9521),
             zoom: 17,
           ),
+          myLocationButtonEnabled: true,
           markers: _markers.toSet(),
         ),
       ),
