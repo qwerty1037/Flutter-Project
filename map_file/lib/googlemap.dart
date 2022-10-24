@@ -28,8 +28,12 @@ class _googlemapscreenState extends State<googlemapscreen> {
 
   final LatLng _center = const LatLng(37.4592, 126.9521);
 
-  void _onMapCreated(GoogleMapController controller) {
+  void _onMapCreated(GoogleMapController controller) async {
     mapController = controller;
+    String value = await DefaultAssetBundle.of(context)
+        .loadString('assets/map_style.json');
+    mapController.setMapStyle(value);
+
   }
   @override
   Widget build(BuildContext context) {
@@ -87,6 +91,13 @@ class _googlemapscreenState extends State<googlemapscreen> {
             target: _center,
             zoom: 17.0,
           ),
+          cameraTargetBounds: CameraTargetBounds(
+              LatLngBounds(
+                southwest: LatLng(37.4467, 126.9473),
+                northeast: LatLng(37.4697, 126.9613),
+              )
+          ),
+          minMaxZoomPreference: const MinMaxZoomPreference(15, 18),
         ),
       );
   }
