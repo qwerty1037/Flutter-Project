@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:snu_lecture_map/googlemap.dart';
 import 'package:snu_lecture_map/search.dart';
 import 'package:snu_lecture_map/setting.dart';
+import 'package:snu_lecture_map/newtimetable.dart';
 import 'package:snu_lecture_map/timetable.dart';
 import 'package:flutter/services.dart';
 
@@ -130,10 +131,15 @@ class _MainPageState extends State<MainPage> {
   Matrix4 transform_matrix = Matrix4.identity();
   /*처음에 실행했을 때 뜨는 창의 index -> 0으로 되어있으면 map이 뜨고 3으로 되어있으면 settings*/
   int _selectedIndex = 0;
-  double bottomBarHeight = 60;
 
   @override
   Widget build(BuildContext context) {
+    //화면 세로길이
+    double screenHeight = MediaQuery.of(context).size.height;
+    //bottom bar의 높이
+    double bottomBarHeight = screenHeight * 0.08;
+    //bottom bar의 아이콘 크기
+    double bottomBariconSize = bottomBarHeight * 0.4;
     // double screen_height = MediaQuery.of(context).size.height;
     // double screen_width = MediaQuery.of(context).size.width;
     // double menubar_height = 50;
@@ -194,13 +200,12 @@ class _MainPageState extends State<MainPage> {
       body: Builder(
         builder: (context) {
           double _appBarHeight = Scaffold.of(context).appBarMaxHeight ?? 0;
+          print(_appBarHeight);
           List<Widget> _widgetOption = [
-            googlemapscreen(),
+            TimeTableNew(),
+            //TimeTable(,),
             SearchScreen(),
-            TimeTable(
-              bottomBarHeight: bottomBarHeight,
-              appBarHeight: _appBarHeight,
-            ),
+            googlemapscreen(),
             SettingScreen(),
           ];
           return IndexedStack(
@@ -214,22 +219,23 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: SizedBox(
         height: bottomBarHeight,
         child: BottomNavigationBar(
-          backgroundColor: Color(0xffaeddef),
+          elevation: 0,
+          backgroundColor: Colors.white,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.map_outlined),
-              label: 'map',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.search_outlined),
-              label: 'search',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.schedule_outlined),
+              icon: Icon(Icons.schedule_outlined, size: bottomBariconSize),
               label: 'schedule',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined),
+              icon: Icon(Icons.search_outlined, size: bottomBariconSize),
+              label: 'search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.map_outlined, size: bottomBariconSize),
+              label: 'map',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings_outlined, size: bottomBariconSize,),
               label: 'setting',
             ),
           ],

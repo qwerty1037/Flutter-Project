@@ -61,50 +61,53 @@ class TimeTableState extends State<TimeTable> {
   Widget build(BuildContext context) {
     screen_width = MediaQuery.of(context).size.width;
     screen_height = MediaQuery.of(context).size.height;
-    double basic_height = (screen_height - widget.appBarHeight - widget.bottomBarHeight-60-20) / 21; // (30분길이)
+    double basic_height = (screen_height - widget.appBarHeight - widget.bottomBarHeight-80) / 21; // (30분길이)
     appBar = widget.appBarHeight;
     bottomBar = widget.bottomBarHeight;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '시간표',
-          style: TextStyle(color: Colors.black),
-        ),
-        elevation: 1,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            color: Colors.black,
-            onPressed: () async {
-              final value = await Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => LectureListView(info)));
-              setState(() {});
-              //showSearch(context: context, delegate: DataSearch());
-            },
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(56),
+        child: AppBar(
+          title: Text(
+            '시간표',
+            style: TextStyle(color: Colors.black),
           ),
-          IconButton(
-              icon: Icon(Icons.add_box_outlined),
+          elevation: 1,
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
               color: Colors.black,
               onPressed: () async {
-                lectureTimeList = await [];
-                item = await ['강의명', '교수', ''];
                 final value = await Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AddLecture(info : info)));
+                    MaterialPageRoute(builder: (context) => LectureListView(info)));
                 setState(() {});
-              }
-            //_onButtonPressed(),
-          ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            color: Colors.black,
-            onPressed: () {
-              _onButtonPressed();
-            },
-          ),
-        ],
+                //showSearch(context: context, delegate: DataSearch());
+              },
+            ),
+            IconButton(
+                icon: Icon(Icons.add_box_outlined),
+                color: Colors.black,
+                onPressed: () async {
+                  lectureTimeList = await [];
+                  item = await ['강의명', '교수', ''];
+                  final value = await Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AddLecture(info : info)));
+                  setState(() {});
+                }
+              //_onButtonPressed(),
+            ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              color: Colors.black,
+              onPressed: () {
+                _onButtonPressed();
+              },
+            ),
+          ],
+        ),
       ),
       drawer: Drawer(
         child: ListView(
