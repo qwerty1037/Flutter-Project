@@ -24,16 +24,26 @@ class _MyAppState extends State<MyApp> {
     _controller.setMapStyle(value);
 
     setState(() {
+      // _markers.add(Marker(
+      //     markerId: MarkerId("301"),
+      //     draggable: true,
+      //     onTap: () => print("Marker!"),
+      //     position: LatLng(37.4498, 126.9525)));
+      // _markers.add(Marker(
+      //     markerId: MarkerId("gwanjung"),
+      //     draggable: true,
+      //     onTap: () => print("Marker!"),
+      //     position: LatLng(37.4592, 126.9521)));
       _markers.add(Marker(
-          markerId: MarkerId("301"),
+          markerId: MarkerId("sthwest"),
           draggable: true,
           onTap: () => print("Marker!"),
-          position: LatLng(37.4498, 126.9525)));
+          position: LatLng(37.4467, 126.9473)));
       _markers.add(Marker(
-          markerId: MarkerId("gwanjung"),
+          markerId: MarkerId("ntheast"),
           draggable: true,
           onTap: () => print("Marker!"),
-          position: LatLng(37.4592, 126.9521)));
+          position: LatLng(37.4697, 126.9613)));
     });
   }
 
@@ -52,7 +62,13 @@ class _MyAppState extends State<MyApp> {
             target: LatLng(37.4592, 126.9521),
             zoom: 17,
           ),
-          myLocationButtonEnabled: true,
+          cameraTargetBounds: CameraTargetBounds(
+            LatLngBounds(
+              southwest: LatLng(37.4467, 126.9473),
+              northeast: LatLng(37.4697, 126.9613),
+            )
+          ),
+          minMaxZoomPreference: const MinMaxZoomPreference(15, 18),
           markers: _markers.toSet(),
         ),
       ),
