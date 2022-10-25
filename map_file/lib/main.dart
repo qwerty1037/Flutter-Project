@@ -199,8 +199,6 @@ class _MainPageState extends State<MainPage> {
       // ),
       body: Builder(
         builder: (context) {
-          double _appBarHeight = Scaffold.of(context).appBarMaxHeight ?? 0;
-          print(_appBarHeight);
           List<Widget> _widgetOption = [
             TimeTableNew(),
             //TimeTable(,),

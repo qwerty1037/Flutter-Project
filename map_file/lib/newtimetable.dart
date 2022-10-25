@@ -13,6 +13,7 @@ double kBoxSize = 52;
 
 Expanded buildTimeColumn() {
   return Expanded(
+    flex: 1,
     child: Column(
       children: [
         SizedBox(
@@ -89,37 +90,44 @@ class TimeTableNew extends StatefulWidget {
 class _TimeTableNewState extends State<TimeTableNew> {
   @override
   Widget build(BuildContext context) {
+
+    double screenHeight = MediaQuery.of(context).size.height;
+    double appbarHeight = screenHeight * 0.08;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          '시간표',
-          style: TextStyle(color: Colors.black),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(appbarHeight),
+        child: AppBar(
+          title: Text(
+            '시간표',
+            style: TextStyle(color: Colors.black),
+          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              color: Colors.black,
+              onPressed: () {
+              },
+            ),
+            IconButton(
+              icon: Icon(Icons.settings),
+              color: Colors.black,
+              onPressed: () {
+                // _onButtonPressed();
+              },
+            ),
+          ],
         ),
-        elevation: 1,
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            color: Colors.black,
-            onPressed: () {
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.settings),
-            color: Colors.black,
-            onPressed: () {
-              // _onButtonPressed();
-            },
-          ),
-        ],
       ),
       drawer: MyDrawer,
       body: Container(
           height: kColumnLength / 2 * kBoxSize + kColumnLength,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(12),
+            border: Border.all(color: Colors.black),
+            borderRadius: BorderRadius.circular(5),
           ),
           child: Row(
             children: [
