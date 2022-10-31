@@ -37,20 +37,27 @@ class _googlemapscreenState extends State<googlemapscreen> {
   }
   @override
   Widget build(BuildContext context) {
+
+    double screenHeight = MediaQuery.of(context).size.height;
+    double appbarHeight = screenHeight * 0.07;
+
     return Scaffold(
-        appBar: AppBar(
-          title: Text("지도", style: TextStyle(color: Colors.black),),
-          backgroundColor: Color(0xffaeddef),
-          //elevation: 5,
-          iconTheme: IconThemeData(),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.restaurant_menu_sharp),
-              onPressed: (){
-                getMenuInfo();
-              },
-            )
-          ],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(appbarHeight),
+          child: AppBar(
+            title: Text("지도", style: TextStyle(color: Colors.black),),
+            backgroundColor: Colors.white,
+            elevation: 0,
+            iconTheme: IconThemeData(),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.restaurant_menu_sharp),
+                onPressed: (){
+                  getMenuInfo();
+                },
+              )
+            ],
+          ),
         ),
         drawer: Drawer(
           elevation: 10,

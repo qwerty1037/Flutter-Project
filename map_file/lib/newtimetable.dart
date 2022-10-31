@@ -7,17 +7,17 @@ import 'package:snu_lecture_map/dataclass.dart';
 import 'package:snu_lecture_map/search.dart';
 
 List week = ['월', '화', '수', '목', '금'];
-var kColumnLength = 22;
-double kFirstColumnHeight = 20;
-double kBoxSize = 52;
+var kColumnLength = 20;
 
 Expanded buildTimeColumn() {
   return Expanded(
     flex: 1,
     child: Column(
       children: [
-        SizedBox(
-          height: kFirstColumnHeight,
+        Expanded(
+          flex: 2,
+          child: Container(
+          ),
         ),
         ...List.generate(
           kColumnLength,
@@ -28,9 +28,11 @@ Expanded buildTimeColumn() {
                 height: 0,
               );
             }
-            return SizedBox(
-              height: kBoxSize,
-              child: Center(child: Text('${index ~/ 2 + 9}')),
+            return Expanded(
+              flex: 5,
+              child: Container(
+                child: Center(child: Text('${index ~/ 2 + 9}')),
+              ),
             );
           },
         ),
@@ -51,10 +53,12 @@ List<Widget> buildDayColumn(int index) {
         children: [
           Column(
             children: [
-              SizedBox(
-                height: 20,
-                child: Text(
-                  '${week[index]}',
+              Expanded(
+                flex: 2,
+                child: Container(
+                  child: Text(
+                    '${week[index]}',
+                  ),
                 ),
               ),
               ...List.generate(
@@ -66,9 +70,11 @@ List<Widget> buildDayColumn(int index) {
                       height: 0,
                     );
                   }
-                  return SizedBox(
-                    height: kBoxSize,
-                    child: Container(),
+                  return Expanded(
+                    flex: 5,
+                    child: Container(
+                      child: Container(),
+                    ),
                   );
                 },
               ),
@@ -92,7 +98,7 @@ class _TimeTableNewState extends State<TimeTableNew> {
   Widget build(BuildContext context) {
 
     double screenHeight = MediaQuery.of(context).size.height;
-    double appbarHeight = screenHeight * 0.08;
+    double appbarHeight = screenHeight * 0.07;
 
     return Scaffold(
       appBar: PreferredSize(
@@ -113,6 +119,14 @@ class _TimeTableNewState extends State<TimeTableNew> {
               },
             ),
             IconButton(
+                icon: Icon(Icons.add_box_outlined),
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) 
+                  => addlectureScreen()));
+                }
+            ),
+            IconButton(
               icon: Icon(Icons.settings),
               color: Colors.black,
               onPressed: () {
@@ -124,7 +138,6 @@ class _TimeTableNewState extends State<TimeTableNew> {
       ),
       drawer: MyDrawer,
       body: Container(
-          height: kColumnLength / 2 * kBoxSize + kColumnLength,
           decoration: BoxDecoration(
             border: Border.all(color: Colors.black),
             borderRadius: BorderRadius.circular(5),
@@ -159,3 +172,31 @@ Drawer MyDrawer = new Drawer(
         ),]
   ),
 );
+
+class addlectureScreen extends StatefulWidget {
+  const addlectureScreen({Key? key}) : super(key: key);
+
+  @override
+  State<addlectureScreen> createState() => _addlectureScreenState();
+}
+
+class _addlectureScreenState extends State<addlectureScreen> {
+  @override
+  Widget build(BuildContext context) {
+
+    double screenHeight = MediaQuery.of(context).size.height;
+    double appbarHeight = screenHeight * 0.07;
+
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(appbarHeight),
+        child: AppBar(
+          title: Text("Add Lecture", style: TextStyle(color: Colors.black),),
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
+      ),
+      body: Center(
+    ));
+  }
+}
