@@ -140,59 +140,7 @@ class _MainPageState extends State<MainPage> {
     double bottomBarHeight = screenHeight * 0.08;
     //bottom bar의 아이콘 크기
     double bottomBariconSize = bottomBarHeight * 0.4;
-    // double screen_height = MediaQuery.of(context).size.height;
-    // double screen_width = MediaQuery.of(context).size.width;
-    // double menubar_height = 50;
-    // double appbar_height = AppBar().preferredSize.height;
 
-    // return CupertinoTabScaffold(
-    //   backgroundColor: Colors.white,
-    //   tabBar: CupertinoTabBar(
-    //     backgroundColor: Color(0xffaeddef),
-    //     items: const <BottomNavigationBarItem>[
-    //       BottomNavigationBarItem(
-    //           icon: Icon(Icons.map_outlined),
-    //           title: Text("map")),
-    //       BottomNavigationBarItem(
-    //           icon: Icon(Icons.search_outlined),
-    //           title: Text("search")),
-    //       BottomNavigationBarItem(
-    //           icon: Icon(Icons.schedule_outlined),
-    //           title: Text("schedule")),
-    //       BottomNavigationBarItem(
-    //           icon: Icon(Icons.settings_applications_outlined),
-    //           title: Text("settings")),
-    //     ],
-    //     activeColor: Color(0xff7e7c7a),
-    //     inactiveColor: Color(0xffa3b6c5),
-    //   ),
-    //   tabBuilder: (context, index) {
-    //     switch (index) {
-    //       case 0:
-    //         return CupertinoTabView(builder: (context) {
-    //           return CupertinoPageScaffold(child: MapScreen());
-    //         });
-    //         break;
-    //       // case 1:
-    //       //   return CupertinoTabView(builder: (context) {
-    //       //     return CupertinoPageScaffold(child: SearchScreen());
-    //       //   });
-    //       //   break;
-    //       case 2:
-    //         return CupertinoTabView(builder: (context) {
-    //           return CupertinoPageScaffold(child: TimeTable());
-    //         });
-    //         break;
-    //       case 3:
-    //         return CupertinoTabView(builder: (context) {
-    //           return CupertinoPageScaffold(child: SettingScreen());
-    //         });
-    //         break;
-    //       default:
-    //         return const CupertinoTabView();
-    //     }
-    //   },
-    // );
     return Scaffold(
       // appBar: AppBar(
       //   title: const Text('SNU Lecture Map'),
@@ -201,7 +149,6 @@ class _MainPageState extends State<MainPage> {
         builder: (context) {
           List<Widget> _widgetOption = [
             TimeTableNew(),
-            //TimeTable(,),
             SearchScreen(),
             googlemapscreen(),
             SettingScreen(),
