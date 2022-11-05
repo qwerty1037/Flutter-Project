@@ -9,13 +9,15 @@ import 'package:snu_lecture_map/setting.dart';
 import 'package:snu_lecture_map/newtimetable.dart';
 import 'package:snu_lecture_map/timetable.dart';
 import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   /*runapp에 비동기 작업이 있을 경우 넣어주는 코드*/
   WidgetsFlutterBinding.ensureInitialized();
 
   /*depreciated 되어있어서 새로 수정함, 네비게이션과 상태바를 숨겨준다*/
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.bottom]);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom]);
 
   runApp(MyApp());
 }
@@ -49,6 +51,11 @@ class _SplashScreenState extends State<SplashScreen> {
 
   /*async는 await를 쓸 수 있게 해주는 키워드*/
   void _init() async {
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.location,
+      Permission.storage,
+    ].request();
+
     /*sql_ ~ 함수가 모두 실행되어서 값을 리턴할때까지 기다림*/
     dataclass = await sql_GetDataFromSql();
     preProcessingData();
@@ -69,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
         //data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
         //child:
         new Scaffold(
-          /*앱 켜질때 플러터 로고 띄우는 그 부분*/
+            /*앱 켜질때 플러터 로고 띄우는 그 부분*/
             backgroundColor: Color(0xffaeddef),
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -180,7 +187,10 @@ class _MainPageState extends State<MainPage> {
               label: 'map',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings_outlined, size: bottomBariconSize,),
+              icon: Icon(
+                Icons.settings_outlined,
+                size: bottomBariconSize,
+              ),
               label: 'setting',
             ),
           ],
