@@ -1,5 +1,6 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:math';
+import 'dart:async';
 
 import 'package:snu_lecture_map/search.dart';
 import 'package:snu_lecture_map/timetable.dart';
@@ -14,6 +15,7 @@ import 'package:flutter/services.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:flutter/animation.dart';
 import 'package:provider/provider.dart';
+import 'package:location/location.dart';
 
 
 class googlemapscreen extends StatefulWidget {
@@ -24,17 +26,43 @@ class googlemapscreen extends StatefulWidget {
 }
 
 class _googlemapscreenState extends State<googlemapscreen> {
-  late GoogleMapController mapController;
 
+  late Completer<GoogleMapController> _mapController = Completer();
   final LatLng _center = const LatLng(37.4592, 126.9521);
+  LocationData? currentlocation;
+  BitmapDescriptor myLocIcon = BitmapDescriptor.defaultMarker;
+
+  void getCurrentLocation(){
+    Location myLocation = Location();
+
+    myLocation.getLocation().then(
+        (myLocation){
+      currentlocation = myLocation;
+      }
+    );
+
+    myLocation.onLocationChanged.listen((newLoc) {
+      currentlocation = newLoc;
+
+      setState(() { });
+    });
+  }
 
   void _onMapCreated(GoogleMapController controller) async {
-    mapController = controller;
+    _mapController.complete(controller);
     String value = await DefaultAssetBundle.of(context)
         .loadString('assets/map_style.json');
-    mapController.setMapStyle(value);
-
+    controller.setMapStyle(value);
   }
+
+  void setCustomMarkerIcon(){
+    // BitmapDescriptor.fromAssetImage(configuration, assetName);
+  }
+
+  void initState(){
+    getCurrentLocation();
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -92,7 +120,9 @@ class _googlemapscreenState extends State<googlemapscreen> {
             ],
           ),
         ),
-        body: GoogleMap(
+        body: currentlocation == null
+            ? const Center(child: Text("Loading"))
+            : GoogleMap(
           onMapCreated: _onMapCreated,
           initialCameraPosition: CameraPosition(
             target: _center,
@@ -105,7 +135,13 @@ class _googlemapscreenState extends State<googlemapscreen> {
               )
           ),
           minMaxZoomPreference: const MinMaxZoomPreference(15, 18),
-        ),
-      );
+          markers: {
+            Marker(
+              markerId: const MarkerId("currentLocation"),
+              position: LatLng(currentlocation!.latitude!, currentlocation!.longitude!),
+            ),
+          }
+          )
+    );
   }
 }
