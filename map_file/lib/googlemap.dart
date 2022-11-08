@@ -2,6 +2,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:snu_lecture_map/menuCrawling.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:geolocator/geolocator.dart';
 
 class googlemapscreen extends StatefulWidget {
   const googlemapscreen({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class googlemapscreen extends StatefulWidget {
 
 class _googlemapscreenState extends State<googlemapscreen> {
   late final Completer<GoogleMapController> mapController = Completer();
+  Set<Marker> markers = {};
 
   final LatLng _center = const LatLng(37.4592, 126.9521);
 
@@ -89,12 +91,65 @@ class _googlemapscreenState extends State<googlemapscreen> {
           target: _center,
           zoom: 17.0,
         ),
+        markers: markers,
+        zoomControlsEnabled: false,
         cameraTargetBounds: CameraTargetBounds(LatLngBounds(
           southwest: LatLng(37.4467, 126.9473),
           northeast: LatLng(37.4697, 126.9613),
         )),
         minMaxZoomPreference: const MinMaxZoomPreference(15, 18),
       ),
+
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () async{
+            Position myposition = await _myposition();
+
+            GoogleMapController controller = await mapController.future;
+            controller.animateCamera(
+                CameraUpdate.newCameraPosition(
+                    CameraPosition(target: LatLng(myposition.latitude, myposition.longitude), zoom: 17)
+                )
+            );
+
+            markers.clear();
+
+            markers.add(
+                Marker(markerId: MarkerId('currentLocation'),
+                    position: LatLng(myposition.latitude, myposition.longitude))
+            );
+            setState(() {});
+          },
+          label: const Icon(Icons.location_on_outlined)
+      ),
     );
   }
+}
+
+Future<Position> _myposition() async{
+  bool serviceEnabled;
+  LocationPermission permission;
+
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+
+  if(!serviceEnabled) {
+    return Future.error("Location services are disabled");
+  }
+
+  permission = await Geolocator.checkPermission();
+
+  if(permission  == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+
+    if(permission == LocationPermission.denied) {
+      return Future.error("Location Permission denied");
+    }
+  }
+
+  if(permission == LocationPermission.deniedForever) {
+    return Future.error("Location Permission permanently denied");
+  }
+
+  Position position = await Geolocator.getCurrentPosition();
+
+  return position;
 }

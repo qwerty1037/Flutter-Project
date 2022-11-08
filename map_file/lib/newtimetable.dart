@@ -10,28 +10,34 @@ List week = ['월', '화', '수', '목', '금'];
 var kColumnLength = 20;
 
 buildTimeColumn(double width, double height) {
-  return Column(
-    children: [
-      Container(
-        height: height*0.03,
-        width: width*0.1,
-        color: Colors.black,
-      ),
-      ...List.generate(
-        kColumnLength,
-            (index) {
-          if (index % 2 == 0) {
-            return const Divider(
-              color: Colors.grey,
-              height: 0,
+  return Expanded(
+    flex: 1,
+    child: Column(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Container(
+          ),
+        ),
+        ...List.generate(
+          kColumnLength,
+              (index) {
+            if (index % 2 == 0) {
+              return const Divider(
+                color: Colors.grey,
+                height: 0,
+              );
+            }
+            return Expanded(
+              flex: 5,
+              child: Container(
+                child: Center(child: Text('${index ~/ 2 + 9}')),
+              ),
             );
-          }
-          return Container(
-            child: Center(child: Text('${index ~/ 2 + 9}')),
-          );
-        },
-      ),
-    ],
+          },
+        ),
+      ],
+    ),
   );
 }
 
@@ -147,11 +153,11 @@ class _TimeTableNewState extends State<TimeTableNew> {
           child: Row(
             children: [
               buildTimeColumn(screenWidth, screenHeight),
-              // ...buildDayColumn(0),
-              // ...buildDayColumn(1),
-              // ...buildDayColumn(2),
-              // ...buildDayColumn(3),
-              // ...buildDayColumn(4),
+              ...buildDayColumn(0),
+              ...buildDayColumn(1),
+              ...buildDayColumn(2),
+              ...buildDayColumn(3),
+              ...buildDayColumn(4),
             ],
           )
       ),
