@@ -48,7 +48,10 @@ class _NaverMapTestState extends State<NaverMapTest> {
             NaverMapController controller = await _controller.future;
             controller.moveCamera(
                 CameraUpdate.toCameraPosition(
-                    CameraPosition(target: LatLng(myposition.latitude, myposition.longitude), zoom: 17)
+                    CameraPosition(
+                        target: LatLng(myposition.latitude, myposition.longitude),
+                        zoom: 16
+                    )
                 )
             );
 
