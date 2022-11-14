@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   naver_map_plugin:
     git: https://github.com/LBSTECH/naver_map_plugin.git
+  geolocator: ^9.0.2
+  location: ^4.4.0
 
 dev_dependencies:
   flutter_test:
