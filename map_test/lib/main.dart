@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -26,12 +27,50 @@ class NaverMapTest extends StatefulWidget {
 class _NaverMapTestState extends State<NaverMapTest> {
   Completer<NaverMapController> _controller = Completer();
   List<Marker> markers = [];
-  MapType _mapType = MapType.Basic;
-  CameraPosition initialPosition = new CameraPosition(
+  late LocationData? currentLocation;
+  final MapType _mapType = MapType.Basic;
+
+  CameraPosition initialPosition = const CameraPosition(
       target: LatLng(37.4592,126.9521), zoom: 16
   );
 
+  void updateCurrentLocation() async {
+    Location tmplocation = Location();
+
+    tmplocation.getLocation().then(
+          (location) {
+        currentLocation = location;
+      },
+    );
+
+    NaverMapController naverMapController = await _controller.future;
+
+    tmplocation.onLocationChanged.listen(
+          (newLoc) {
+        currentLocation = newLoc;
+
+        naverMapController.moveCamera(
+          CameraUpdate.toCameraPosition(
+            CameraPosition(
+              zoom: 13.5,
+              target: LatLng(
+                newLoc.latitude!,
+                newLoc.longitude!,
+              ),
+            ),
+          ),
+        );
+        setState(() {});
+      },
+    );
+  }
+
+
   @override
+  initState(){
+    super.initState();
+    updateCurrentLocation();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('NaverMap Test')),
@@ -43,23 +82,16 @@ class _NaverMapTestState extends State<NaverMapTest> {
       ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () async{
-            Position myposition = await _myposition();
+            Position myPosition = await _myposition();
 
             NaverMapController controller = await _controller.future;
             controller.moveCamera(
                 CameraUpdate.toCameraPosition(
                     CameraPosition(
-                        target: LatLng(myposition.latitude, myposition.longitude),
+                        target: LatLng(myPosition.latitude, myPosition.longitude),
                         zoom: 16
                     )
                 )
-            );
-
-            markers.clear();
-
-            markers.add(
-                Marker(markerId: "current Position",
-                    position: LatLng(myposition.latitude, myposition.longitude))
             );
             setState(() {});
           },
