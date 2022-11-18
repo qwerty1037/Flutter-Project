@@ -49,6 +49,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
             late LocationData currentLocation;
             Location tmplocation = Location();
 
+            ///테스트 용도!!!!!!!!!!!!!!!!!!
             print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             print(buttonBool);
             print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
@@ -59,7 +60,6 @@ class _NaverMapTestState extends State<NaverMapTest> {
               },
             );
 
-            if (buttonBool){
               tmplocation.onLocationChanged.listen(
                 (newLoc) async {
                   currentLocation = newLoc;
@@ -67,21 +67,22 @@ class _NaverMapTestState extends State<NaverMapTest> {
                   NaverMapController naverMapController =
                       await _controller.future;
 
-                  naverMapController.moveCamera(
-                    CameraUpdate.toCameraPosition(
-                      CameraPosition(
-                        zoom: 16,
-                        target: LatLng(
-                          newLoc.latitude!,
-                          newLoc.longitude!,
+                  if (buttonBool){
+                    naverMapController.moveCamera(
+                      CameraUpdate.toCameraPosition(
+                        CameraPosition(
+                          zoom: 16,
+                          target: LatLng(
+                            newLoc.latitude!,
+                            newLoc.longitude!,
+                          ),
                         ),
                       ),
-                    ),
-                  );
+                    );
+                  }
                   setState(() {});
                 },
               );
-            }
           },
           label: const Icon(Icons.location_on_outlined)
       ),
