@@ -89,8 +89,16 @@ class _NaverMapTestState extends State<NaverMapTest> {
     );
   }
 
-  void onMapCreated(NaverMapController controller) {
+  void onMapCreated(NaverMapController controller) async {
     if (_controller.isCompleted) _controller = Completer();
     _controller.complete(controller);
+
+    // markers.add(
+    //   Marker(
+    //       markerId: "1",
+    //       position: LatLng(37.4506, 126.9534),
+    //       icon: _image,
+    //   )
+    // );
   }
 }
