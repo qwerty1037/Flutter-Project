@@ -27,7 +27,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
   Completer<NaverMapController> _controller = Completer();
   List<Marker> markers = [];
   final MapType _mapType = MapType.Basic;
-  bool buttonBool = false;
+  // bool buttonBool = false;
 
   CameraPosition initialPosition = const CameraPosition(
       target: LatLng(37.4592,126.9521), zoom: 16
@@ -38,54 +38,55 @@ class _NaverMapTestState extends State<NaverMapTest> {
     return Scaffold(
       appBar: AppBar(title: const Text('NaverMap Test')),
       body: NaverMap(
+        locationButtonEnable: true,
         onMapCreated: onMapCreated,
         mapType: _mapType,
         markers: markers,
         initialCameraPosition: initialPosition,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: () async{
-            buttonBool = !buttonBool;
-            late LocationData currentLocation;
-            Location tmplocation = Location();
-
-            ///테스트 용도!!!!!!!!!!!!!!!!!!
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            print(buttonBool);
-            print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-
-            tmplocation.getLocation().then(
-                  (location) {
-                currentLocation = location;
-              },
-            );
-
-              tmplocation.onLocationChanged.listen(
-                (newLoc) async {
-                  currentLocation = newLoc;
-
-                  NaverMapController naverMapController =
-                      await _controller.future;
-
-                  if (buttonBool){
-                    naverMapController.moveCamera(
-                      CameraUpdate.toCameraPosition(
-                        CameraPosition(
-                          zoom: 16,
-                          target: LatLng(
-                            newLoc.latitude!,
-                            newLoc.longitude!,
-                          ),
-                        ),
-                      ),
-                    );
-                  }
-                  setState(() {});
-                },
-              );
-          },
-          label: const Icon(Icons.location_on_outlined)
-      ),
+      // floatingActionButton: FloatingActionButton.extended(
+      //     onPressed: () async{
+      //       buttonBool = !buttonBool;
+      //       late LocationData currentLocation;
+      //       Location tmplocation = Location();
+      //
+      //       ///테스트 용도!!!!!!!!!!!!!!!!!!
+      //       print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      //       print(buttonBool);
+      //       print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+      //
+      //       tmplocation.getLocation().then(
+      //             (location) {
+      //           currentLocation = location;
+      //         },
+      //       );
+      //
+      //         tmplocation.onLocationChanged.listen(
+      //           (newLoc) async {
+      //             currentLocation = newLoc;
+      //
+      //             NaverMapController naverMapController =
+      //                 await _controller.future;
+      //
+      //             if (buttonBool){
+      //               naverMapController.moveCamera(
+      //                 CameraUpdate.toCameraPosition(
+      //                   CameraPosition(
+      //                     zoom: 16,
+      //                     target: LatLng(
+      //                       newLoc.latitude!,
+      //                       newLoc.longitude!,
+      //                     ),
+      //                   ),
+      //                 ),
+      //               );
+      //             }
+      //             setState(() {});
+      //           },
+      //         );
+      //     },
+      //     label: const Icon(Icons.location_on_outlined)
+      // ),
     );
   }
 
