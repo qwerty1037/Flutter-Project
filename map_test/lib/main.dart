@@ -43,51 +43,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
         mapType: _mapType,
         markers: markers,
         initialCameraPosition: initialPosition,
-        // locationButtonEnable: true,
       ),
-      // floatingActionButton: FloatingActionButton.extended(
-      //     onPressed: () async{
-      //       buttonBool = !buttonBool;
-      //       late LocationData currentLocation;
-      //       Location tmplocation = Location();
-      //
-      //       ///테스트 용도!!!!!!!!!!!!!!!!!!
-      //       print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-      //       print(buttonBool);
-      //       print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-      //
-      //       tmplocation.getLocation().then(
-      //             (location) {
-      //           currentLocation = location;
-      //         },
-      //       );
-      //
-      //         tmplocation.onLocationChanged.listen(
-      //           (newLoc) async {
-      //             currentLocation = newLoc;
-      //
-      //             NaverMapController naverMapController =
-      //                 await _controller.future;
-      //
-      //             if (buttonBool){
-      //               naverMapController.moveCamera(
-      //                 CameraUpdate.toCameraPosition(
-      //                   CameraPosition(
-      //                     zoom: 16,
-      //                     target: LatLng(
-      //                       newLoc.latitude!,
-      //                       newLoc.longitude!,
-      //                     ),
-      //                   ),
-      //                 ),
-      //               );
-      //             }
-      //             setState(() {});
-      //           },
-      //         );
-      //     },
-      //     label: const Icon(Icons.location_on_outlined)
-      // ),
     );
   }
 
