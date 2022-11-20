@@ -42,6 +42,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
         mapType: _mapType,
         markers: markers,
         initialCameraPosition: initialPosition,
+        // locationButtonEnable: true,
       ),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () async{
