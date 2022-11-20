@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
 
 void main() {
@@ -26,15 +25,21 @@ class NaverMapTest extends StatefulWidget {
 class _NaverMapTestState extends State<NaverMapTest> {
   Completer<NaverMapController> _controller = Completer();
   List<Marker> markers = [];
+  OverlayImage? markerIcon;
   final MapType _mapType = MapType.Basic;
-  // bool buttonBool = false;
 
   CameraPosition initialPosition = const CameraPosition(
       target: LatLng(37.4592,126.9521), zoom: 16
   );
 
+  void initState(){
+    addMarkerImage();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: const Text('NaverMap Test')),
       body: NaverMap(
@@ -51,12 +56,25 @@ class _NaverMapTestState extends State<NaverMapTest> {
     if (_controller.isCompleted) _controller = Completer();
     _controller.complete(controller);
 
-    // markers.add(
-    //   Marker(
-    //       markerId: "1",
-    //       position: LatLng(37.4506, 126.9534),
-    //       icon: _image,
-    //   )
-    // );
+    markers.add(
+      Marker(
+          markerId: "1",
+          position: LatLng(37.4506, 126.9534),
+          icon: markerIcon,
+      )
+    );
+  }
+
+  void addMarkerImage() async {
+    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    OverlayImage.fromAssetImage(assetName: 'assets/icons/fork.png').then(
+            (icon){
+              print("############");
+              print(icon);
+              print("############");
+              setState(() {
+                markerIcon = icon;
+              });
+    });
   }
 }
