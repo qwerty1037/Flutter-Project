@@ -43,12 +43,12 @@ class _NaverMapTestState extends State<NaverMapTest> {
     return Scaffold(
       appBar: AppBar(title: const Text('NaverMap Test')),
       body: NaverMap(
-        locationButtonEnable: true,
-        onMapCreated: onMapCreated,
-        mapType: _mapType,
-        markers: markers,
-        initialCameraPosition: initialPosition,
-      ),
+          locationButtonEnable: true,
+          onMapCreated: onMapCreated,
+          mapType: _mapType,
+          markers: markers,
+          initialCameraPosition: initialPosition,
+        ),
     );
   }
 
@@ -59,7 +59,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
     markers.add(
       Marker(
           markerId: "1",
-          position: LatLng(37.4506, 126.9534),
+          position: LatLng(37.4592,126.9521),
           icon: markerIcon,
       )
     );
@@ -67,13 +67,13 @@ class _NaverMapTestState extends State<NaverMapTest> {
 
   void addMarkerImage() async {
     print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    OverlayImage.fromAssetImage(assetName: 'assets/icons/fork.png').then(
+    OverlayImage.fromAssetImage(assetName: 'assets/icons/1024bit.png').then(
             (icon){
               print("############");
               print(icon);
               print("############");
+              markerIcon = icon;
               setState(() {
-                markerIcon = icon;
               });
     });
   }
