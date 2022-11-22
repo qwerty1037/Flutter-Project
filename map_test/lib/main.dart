@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
+import 'storeMarker.dart';
+List<Marker> testMarker = TestData().returnMarkers();
+
 
 void main() {
   runApp(MyApp());
@@ -49,6 +52,9 @@ class _NaverMapTestState extends State<NaverMapTest> {
           markers: markers,
           initialCameraPosition: initialPosition,
         ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){markerDisplay();},
+      ),
     );
   }
 
@@ -56,25 +62,26 @@ class _NaverMapTestState extends State<NaverMapTest> {
     if (_controller.isCompleted) _controller = Completer();
     _controller.complete(controller);
 
-    markers.add(
-      Marker(
-          markerId: "1",
-          position: LatLng(37.4592,126.9521),
-          icon: markerIcon,
-      )
-    );
+
+    markers.addAll(testMarker);
   }
 
   void addMarkerImage() async {
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    OverlayImage.fromAssetImage(assetName: 'assets/icons/1024bit.png').then(
+    OverlayImage.fromAssetImage(assetName: 'assets/icons/32bit.png').then(
             (icon){
-              print("############");
-              print(icon);
-              print("############");
               markerIcon = icon;
               setState(() {
               });
     });
   }
+
+  void markerDisplay(){
+    markers.clear();
+    //~~~~~
+
+    setState(() {
+    });
+
+  }
+
 }
