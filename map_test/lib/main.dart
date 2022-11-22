@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:naver_map_plugin/naver_map_plugin.dart';
+import 'storeMarker.dart';
+List<Marker> testMarker = TestData().returnMarkers();
+
 
 void main() {
   runApp(MyApp());
@@ -28,24 +31,29 @@ class _NaverMapTestState extends State<NaverMapTest> {
   OverlayImage? markerIcon;
   final MapType _mapType = MapType.Basic;
 
-  CameraPosition initialPosition =
-      const CameraPosition(target: LatLng(37.4592, 126.9521), zoom: 16);
+  CameraPosition initialPosition = const CameraPosition(
+      target: LatLng(37.4592,126.9521), zoom: 16
+  );
 
-  void initState() {
+  void initState(){
     addMarkerImage();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: const Text('NaverMap Test')),
       body: NaverMap(
-        locationButtonEnable: true,
-        onMapCreated: onMapCreated,
-        mapType: _mapType,
-        markers: markers,
-        initialCameraPosition: initialPosition,
+          locationButtonEnable: true,
+          onMapCreated: onMapCreated,
+          mapType: _mapType,
+          markers: markers,
+          initialCameraPosition: initialPosition,
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){markerDisplay();},
       ),
     );
   }
@@ -54,20 +62,26 @@ class _NaverMapTestState extends State<NaverMapTest> {
     if (_controller.isCompleted) _controller = Completer();
     _controller.complete(controller);
 
-    markers.add(Marker(
-      markerId: "1",
-      position: LatLng(37.4592, 126.9521),
-      icon: markerIcon,
-      width: 45,
-      height: 45
-    ));
+
+    markers.addAll(testMarker);
   }
 
   void addMarkerImage() async {
-    OverlayImage.fromAssetImage(assetName: 'assets/icons/restaurant.png')
-        .then((icon) {
-      markerIcon = icon;
-      setState(() {});
+    OverlayImage.fromAssetImage(assetName: 'assets/icons/32bit.png').then(
+            (icon){
+              markerIcon = icon;
+              setState(() {
+              });
     });
   }
+
+  void markerDisplay(){
+    markers.clear();
+    //~~~~~
+
+    setState(() {
+    });
+
+  }
+
 }
