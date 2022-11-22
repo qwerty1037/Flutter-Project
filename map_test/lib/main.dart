@@ -28,27 +28,25 @@ class _NaverMapTestState extends State<NaverMapTest> {
   OverlayImage? markerIcon;
   final MapType _mapType = MapType.Basic;
 
-  CameraPosition initialPosition = const CameraPosition(
-      target: LatLng(37.4592,126.9521), zoom: 16
-  );
+  CameraPosition initialPosition =
+      const CameraPosition(target: LatLng(37.4592, 126.9521), zoom: 16);
 
-  void initState(){
+  void initState() {
     addMarkerImage();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(title: const Text('NaverMap Test')),
       body: NaverMap(
-          locationButtonEnable: true,
-          onMapCreated: onMapCreated,
-          mapType: _mapType,
-          markers: markers,
-          initialCameraPosition: initialPosition,
-        ),
+        locationButtonEnable: true,
+        onMapCreated: onMapCreated,
+        mapType: _mapType,
+        markers: markers,
+        initialCameraPosition: initialPosition,
+      ),
     );
   }
 
@@ -56,25 +54,20 @@ class _NaverMapTestState extends State<NaverMapTest> {
     if (_controller.isCompleted) _controller = Completer();
     _controller.complete(controller);
 
-    markers.add(
-      Marker(
-          markerId: "1",
-          position: LatLng(37.4592,126.9521),
-          icon: markerIcon,
-      )
-    );
+    markers.add(Marker(
+      markerId: "1",
+      position: LatLng(37.4592, 126.9521),
+      icon: markerIcon,
+      width: 45,
+      height: 45
+    ));
   }
 
   void addMarkerImage() async {
-    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    OverlayImage.fromAssetImage(assetName: 'assets/icons/1024bit.png').then(
-            (icon){
-              print("############");
-              print(icon);
-              print("############");
-              markerIcon = icon;
-              setState(() {
-              });
+    OverlayImage.fromAssetImage(assetName: 'assets/icons/restaurant.png')
+        .then((icon) {
+      markerIcon = icon;
+      setState(() {});
     });
   }
 }
