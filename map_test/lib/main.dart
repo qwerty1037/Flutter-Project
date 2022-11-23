@@ -6,13 +6,15 @@ List<Marker> testMarker = TestData().returnMarkers();
 
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Naver Map',
       home: NaverMapTest(),
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
 }
 
 class NaverMapTest extends StatefulWidget {
+  const NaverMapTest({super.key});
+
   @override
   _NaverMapTestState createState() => _NaverMapTestState();
 }
@@ -35,6 +39,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
       target: LatLng(37.4592,126.9521), zoom: 16
   );
 
+  @override
   void initState(){
     addMarkerImage();
     super.initState();
