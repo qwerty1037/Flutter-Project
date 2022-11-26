@@ -10,6 +10,60 @@ import 'package:map_test/main.dart';
 //   CustomMarker({required super.markerId, super.position, super.width, super.height});
 // }
 
+class Place {
+  final String id = "";
+  final String placeName = "";
+  final LatLng placePosition = const LatLng(0, 0);
+  final String markerImage = "";
+  final String phoneNumber = "";
+  final String detailInfo = "";
+}
+
+class Restaurant implements Place {
+  @override
+  final String id;
+  @override
+  final String placeName;
+  @override
+  final LatLng placePosition;
+  @override
+  final String markerImage = "assets/icons/restaurant.png";
+  @override
+  final String phoneNumber;
+  @override
+  final String detailInfo;
+
+  Restaurant({
+    required this.id,
+    required this.placeName,
+    required this.placePosition,
+    required this.phoneNumber,
+    required this.detailInfo
+});
+}
+
+class Cafe implements Place {
+  @override
+  final String id;
+  @override
+  final String placeName;
+  @override
+  final LatLng placePosition;
+  @override
+  final String markerImage = "assets/icons/cafe.png";
+  @override
+  final String phoneNumber;
+  @override
+  final String detailInfo;
+
+  Cafe({
+    required this.id,
+    required this.placeName,
+    required this.placePosition,
+    required this.phoneNumber,
+    required this.detailInfo
+  });
+}
 
 class TestData {
   List<Marker> testMarker= [
