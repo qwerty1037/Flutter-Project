@@ -71,8 +71,6 @@ class _NaverMapTestState extends State<NaverMapTest> {
 
   void markerDisplay(){
     markers.clear();
-    //~
-
     setState(() {
     });
 
