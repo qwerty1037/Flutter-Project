@@ -11,7 +11,7 @@ class MarkerData {
         detailInfo: "중앙도서관 카페"),
     Restaurant(
         id: "2",
-        placeName: "곻대 간이식당",
+        placeName: "공대 간이식당",
         location: const LatLng(37.4572, 126.9508),
         detailInfo: "공대 간이식당"),
   ];

@@ -7,11 +7,10 @@ class CustomMarker extends Marker {
   CustomMarker({
     required this.place,
     required super.position,
-    super.width = 35,
-    super.height = 45
+    super.width = 20,
+    super.height = 20
   }) : super(markerId: place.id,
-      captionText: place.placeName,
-      iconTintColor: place.markerColor);
+      captionText: place.placeName);
 
   factory CustomMarker.fromMyPlace(PlaceType place) =>
       CustomMarker(place: place, position: place.location);

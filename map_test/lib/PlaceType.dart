@@ -7,7 +7,6 @@ class PlaceType {
   final String markerImage = "";
   final LatLng location = const LatLng(0, 0);
   final String detailInfo = "";
-  final Color markerColor = Colors.black;
 }
 
 class Restaurant implements PlaceType {
@@ -21,8 +20,6 @@ class Restaurant implements PlaceType {
   final LatLng location;
   @override
   final String detailInfo;
-  @override
-  final Color markerColor = Colors.red;
 
   Restaurant({
     required this.id,
@@ -43,8 +40,6 @@ class Cafe implements PlaceType {
   final LatLng location;
   @override
   final String detailInfo;
-  @override
-  final Color markerColor = Colors.orange;
 
   Cafe({
     required this.id,
