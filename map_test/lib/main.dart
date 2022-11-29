@@ -44,6 +44,8 @@ class _NaverMapTestState extends State<NaverMapTest> {
     for (var marker in markers) {
       marker.createImage();
     }
+    setState(() {
+    });
   }
 
   @override
@@ -71,6 +73,7 @@ class _NaverMapTestState extends State<NaverMapTest> {
 
   void markerDisplay(){
     markers.clear();
+    // CustomMarker.changeImage;
     setState(() {
     });
 
