@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:googlemap_0/CustomMarker.dart';
+import 'package:googlemap_0/MarkerData.dart';
 import 'package:location/location.dart';
 import 'dart:async';
 
@@ -16,7 +18,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final Completer<GoogleMapController> _controller = Completer();
-  final List<Marker> _markers = [];
+  final List<CustomMarker> _markers = MarkerData.myMarkers();
   bool buttonBool = false;
 
   Future<void> _onMapCreated(GoogleMapController controller) async {
@@ -37,22 +39,25 @@ class _MyAppState extends State<MyApp> {
       //     draggable: true,
       //     onTap: () => print("Marker!"),
       //     position: LatLng(37.4592, 126.9521)));
-      _markers.add(Marker(
-          markerId: MarkerId("sthwest"),
-          draggable: true,
-          onTap: () => print("Marker!"),
-          position: LatLng(37.4467, 126.9473)));
-      _markers.add(Marker(
-          markerId: MarkerId("ntheast"),
-          draggable: true,
-          onTap: () => print("Marker!"),
-          position: LatLng(37.4697, 126.9613)));
+      // _markers.add(Marker(
+      //     markerId: MarkerId("sthwest"),
+      //     draggable: true,
+      //     onTap: () => print("Marker!"),
+      //     position: LatLng(37.4467, 126.9473)));
+      // _markers.add(Marker(
+      //     markerId: MarkerId("ntheast"),
+      //     draggable: true,
+      //     onTap: () => print("Marker!"),
+      //     position: LatLng(37.4697, 126.9613)));
     });
   }
 
   void initState(){
     locationPermission();
     super.initState();
+    for (var marker in _markers){
+      marker.createImage();
+    }
   }
 
   @override
@@ -98,6 +103,8 @@ class _MyAppState extends State<MyApp> {
               },
             );
 
+            /*추후 필요하면 listen을 cancel로 취소하는 개선 필요!! 계속 listen이 되고 있다*/
+            /* https://software-creator.tistory.com/9 침고 */
             tmplocation.onLocationChanged.listen(
                   (newLoc) async {
                 currentLocation = newLoc;
