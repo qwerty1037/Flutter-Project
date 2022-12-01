@@ -70,6 +70,8 @@ class _MyAppState extends State<MyApp> {
           ),
           minMaxZoomPreference: const MinMaxZoomPreference(15, 18),
           markers: _markers.toSet(),
+          myLocationEnabled: true,
+          myLocationButtonEnabled: true,
         ),
       ),
     );
